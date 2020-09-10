@@ -6,10 +6,9 @@ import Chip from '@material-ui/core/Chip';
 const useStyles = makeStyles (theme => ({
 
     root : {
-    justifyItems : "center",
-    alignItems : "center",
     textAlign : "center",
     margin : 100,
+    marginBottom : 20,
     padding: 10
     },
    tag: {
