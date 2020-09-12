@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React , {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import Typography from '@material-ui/core/Typography';
-
+import SignUpButton from './SignUpButton';
+import {userContext} from '../../App'
 
 
 
@@ -39,16 +39,20 @@ const useStyles = makeStyles (({
 
 
 export default function SignUpModal(props) {
+
+  const user = useContext(userContext)
   const classes = useStyles();
   const { onClose, open } = props;
   
   return (
     <Dialog className={classes.root} onClose={onClose} open={open}>
       <DialogTitle id="simple-dialog-title">
-          <Typography className={classes.title}>Join Meduim</Typography>
+  <Typography className={classes.title}>Join Meduim {user}</Typography>
       </DialogTitle>
       <DialogContent className={classes.content}>
-      <Button variant="contained" className={classes.button}>Sign up with Google</Button>
+      <SignUpButton onClick = {() => {
+        setUser('logged In ')
+      }}/>
       <Typography className={classes.text}>Click “Sign Up” to agree to Medium’s Terms of Service and acknowledge that Medium’s Privacy Policy applies to you.</Typography>
       </DialogContent>
     </Dialog>
