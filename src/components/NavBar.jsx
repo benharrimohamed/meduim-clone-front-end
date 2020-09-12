@@ -25,7 +25,7 @@ const useStyles = makeStyles (theme => ({
 }))
 
 
-const NavBar = () => {
+export const NavBar = () => {
 
 const theme = useTheme();
 const classes = useStyles(theme)
@@ -48,4 +48,4 @@ const matches = useMediaQuery(theme.breakpoints.up('sm'));
     );
 }
 
-export {NavBar}
+
