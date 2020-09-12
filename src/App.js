@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState,createContext} from 'react';
 import {NavBar} from './components/NavBar'
 import HeadLine from './components/Home/HeadLine'
 import Tags from './components/Home/Tags'
 import {makeStyles , Grid ,Typography} from '@material-ui/core'
 import {GetStartedButton} from './components/Home/GetStartedButton'
+import {AuthProvider} from './Providers/AuthProvider'
+
 
 const useStyles = makeStyles ({
   text : {
@@ -14,17 +16,22 @@ const useStyles = makeStyles ({
   }
 })
 
+export const userContext = createContext(null)
+
 function App() {
+
+  const [user , setUser] = useState('user')
   const classes = useStyles();
   return (
-      <div>
-      <NavBar className={classes.navBar}/>
-      <HeadLine />
-      <Tags />
-      <GetStartedButton height={60} width={400} fontSize={20}/>
-      <Typography className={classes.text}>Alreadi have an account , Sign in ?</Typography> 
-      </div>
+      <userContext.Provider user={user}>
+        <NavBar className={classes.navBar}/>
+        <HeadLine></HeadLine>
+        <Tags></Tags>
+        <GetStartedButton height={60} width={400} fontSize={20}></GetStartedButton>
+        <Typography className={classes.text}>Alreadi have an account , Sign in ?</Typography>
+      </userContext.Provider>
   );
 }
+
 
 export default App;
