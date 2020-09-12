@@ -1,15 +1,15 @@
-import React , {useState} from 'react';
+import React , {useState , useContext} from 'react';
 import {Button} from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles'
 import SignUpModal from '../SignUp/SignUpModal'
+import {AuthProvider} from '../../Providers/AuthProvider'
 
-
-const useStyles = makeStyles ((props) => ({
+const useStyles = makeStyles ((props,loggedIn) => ({
     
     root : {
     textAlign: 'center'
     },
-    menuButton: props => ({
+    menuButton: (props,loggedIn) => ({
         background: '#00c853',
         borderRadius: 3,
         border: 0,
@@ -19,9 +19,10 @@ const useStyles = makeStyles ((props) => ({
         fontSize : props.fontSize,
         padding: '0 30px',
         marginRight: 25,
-        '&:hover': {
-        background: "#00e676",
-     },
+        display : loggedIn ? 'none' : '',
+          '&:hover': {
+           background: "#00e676",
+           },
     }),
 }))
 
@@ -29,7 +30,10 @@ const useStyles = makeStyles ((props) => ({
 
 const GetStartedButton = (props) => {
 
-    const classes = useStyles(props)
+    const value = useContext(AuthProvider);
+
+    console.log('value: ' +value)
+    const classes = useStyles(props,false)
     const [open , setOpen ] = useState(false);
 
     const OpenModal = () => {
@@ -44,7 +48,7 @@ const GetStartedButton = (props) => {
 
   return (
       <div className={classes.root}>
-      <Button onClick={OpenModal} className={classes.menuButton}> Get Started </Button>
+      <Button onClick={OpenModal} className={classes.menuButton}>Get Started</Button>
       <SignUpModal open={open} onClose={CloseModal} />
       </div>
   )
