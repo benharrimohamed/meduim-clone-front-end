@@ -2,7 +2,6 @@ import React , {useState , useContext} from 'react';
 import {Button} from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles'
 import SignUpModal from '../SignUp/SignUpModal'
-import {AuthProvider} from '../../Providers/AuthProvider'
 
 const useStyles = makeStyles ((props,loggedIn) => ({
     
@@ -30,9 +29,7 @@ const useStyles = makeStyles ((props,loggedIn) => ({
 
 const GetStartedButton = (props) => {
 
-    const value = useContext(AuthProvider);
-
-    console.log('value: ' +value)
+    
     const classes = useStyles(props,false)
     const [open , setOpen ] = useState(false);
 
