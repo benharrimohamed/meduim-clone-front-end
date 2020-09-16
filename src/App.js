@@ -4,7 +4,6 @@ import HeadLine from './components/Home/HeadLine'
 import Tags from './components/Home/Tags'
 import {makeStyles , Grid ,Typography} from '@material-ui/core'
 import {GetStartedButton} from './components/Home/GetStartedButton'
-import {AuthProvider} from './Providers/AuthProvider'
 
 
 const useStyles = makeStyles ({
@@ -23,13 +22,13 @@ function App() {
   const [user , setUser] = useState('user')
   const classes = useStyles();
   return (
-      <userContext.Provider user={user}>
+        <div>
         <NavBar className={classes.navBar}/>
         <HeadLine></HeadLine>
         <Tags></Tags>
         <GetStartedButton height={60} width={400} fontSize={20}></GetStartedButton>
         <Typography className={classes.text}>Alreadi have an account , Sign in ?</Typography>
-      </userContext.Provider>
+        </div>
   );
 }
 
