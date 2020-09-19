@@ -1,7 +1,8 @@
 import React from 'react';
 import {Typography , makeStyles}  from '@material-ui/core'
 
-const useStyles = makeStyles (theme => ({
+const useStyles = makeStyles ({
+
 
     root :  {
     zIndex : 0
@@ -24,7 +25,7 @@ const useStyles = makeStyles (theme => ({
         color :"#212121"
     }
 
-}))
+})
 
 export default function HeadLine () {
 
